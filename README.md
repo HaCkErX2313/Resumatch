@@ -1,63 +1,90 @@
-# Welcome to My Lovable project
+📄 ResuMatch
+AI-Powered Resume Reviewer & Job Finder
 
-## Project info
+Elevate your job search with smart resume analysis, ATS-friendly suggestions, and instant job matching — all in one powerful web app.
 
-**URL**: https://lovable.dev/projects/317e0032-b1c7-41a3-987d-90c366d3c693
+🌐 [Visit Website] | 🧠 Features | 🚀 How It Works | ❓ FAQ
 
-## How can I edit this code?
+🔥 What is ResuMatch?
+ResuMatch is your all-in-one AI Job Search Assistant, built to review resumes, improve ATS scores, and recommend jobs tailored to your skills.
 
-There are several ways of editing your application.
+Whether you’re a student applying for internships, a software engineer job hunting, or a marketing professional switching roles — ResuMatch ensures your resume stands out.
 
-**Use Lovable**
+Built for hackathons, job seekers, and career explorers alike — powered by AI.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/317e0032-b1c7-41a3-987d-90c366d3c693) and start prompting.
+✨ Features
+🔍 AI Resume Analysis
+Instantly review your uploaded resume and get a detailed breakdown — grammar issues, formatting tips, and keyword recommendations for better ATS compatibility.
 
-Changes made via Lovable will be committed automatically to this repo.
+🎯 Job Matching Engine
+Match your resume with real job listings based on skills, experience, and job titles. Built-in matching score for easy comparisons.
 
-**Use your preferred IDE**
+📈 ATS Optimization Score
+Get a smart score (out of 100) based on how well your resume aligns with job descriptions and recruitment trends.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+📥 Download Improved Resume or Feedback
+Export suggestions or enhanced resume versions directly to PDF.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🧠 Skill Gap Analyzer
+See what skills you're missing compared to the ideal candidate for your dream job.
 
-Follow these steps:
+📊 Dashboard View
+Track your resume score, job match trends, and progress over time.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+⚙️ Smart Keyword Suggestion Engine
+AI-generated suggestions to help your resume rank higher in applicant tracking systems (ATS).
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+🧭 How It Works
+Upload Resume
+Drag-and-drop or upload your .pdf / .docx resume.
 
-# Step 3: Install the necessary dependencies.
-npm i
+Get AI-Powered Feedback
+Let GPT-4 and NLP tools analyze your resume line-by-line.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Match to Best-Fit Jobs
+Browse a curated list of job recommendations with match scores.
 
-**Edit a file directly in GitHub**
+Download, Improve, Apply
+Revise your resume or download personalized feedback, then start applying with confidence.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+🛠 Tech Stack
+Layer	Tech Used
+Frontend	React.js / Next.js, Tailwind CSS, Bootstrap
+Backend	Python (Flask / FastAPI)
+AI/NLP	OpenAI GPT-4, spaCy, pyresparser
+Resume Parsing	pdfminer, python-docx, pyresparser
+Job Matching	Custom logic or JSearch / SerpAPI
+Auth	Firebase / JWT (Optional)
+Deployment	Vercel (Frontend) + Render (Backend)
 
-**Use GitHub Codespaces**
+📄 License
+MIT License. Feel free to fork,customize, or contribute.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+💡 Use Cases
+Students applying for internships or campus placements
 
-## What technologies are used for this project?
+Professionals switching careers or updating resumes
 
-This project is built with:
+Job seekers preparing for high-volume tech/company applications
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Career services & university placement cells
 
+❓ FAQ
+Is it free to use?
+Yes! Core features are free. Advanced features like PDF suggestions and premium job APIs can be upgraded.
 
+Can I use any resume format?
+Currently supports .pdf and .docx.
+
+How accurate is the job matching?
+It uses NLP to match resume skills with job roles and keywords. Results improve with more detailed resumes.
+
+Can it write or edit my resume?
+Yes. GPT-4 helps generate better versions of your resume sections and suggests edits for formatting and clarity.
+
+🚀 Ready to Land That Job?
+Start reviewing your resume, finding your perfect job match, and optimizing for success — all in minutes.
+
+👉 Start Your Free Review Now
+
+🙌 Built with 💻 by Sumit Patel
