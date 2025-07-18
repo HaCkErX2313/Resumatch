@@ -13,6 +13,32 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
   const { toast } = useToast();
 
+  const validateFile = (file: File): boolean => {
+    // Check file size (10MB limit)
+    const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+    if (file.size > maxSize) {
+      toast({
+        title: "File too large",
+        description: "Please upload a file smaller than 10MB",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    // Check file type - allow resume formats and images for testing
+    const allowedTypes = /\.(pdf|doc|docx|jpg|jpeg|png|txt)$/i;
+    if (!file.name.match(allowedTypes)) {
+      toast({
+        title: "Invalid file type",
+        description: "Please upload a PDF, Word document, or image file",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragOver(false);
@@ -20,38 +46,51 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
     const files = Array.from(e.dataTransfer.files);
     const file = files[0];
     
-    if (!file) return;
-    
-    if (!file.name.match(/\.(pdf|doc|docx)$/i)) {
+    if (!file) {
       toast({
-        title: "Invalid file type",
-        description: "Please upload a PDF or Word document",
+        title: "No file selected",
+        description: "Please select a file to upload",
         variant: "destructive",
       });
       return;
     }
     
-    handleFileUpload(file);
+    if (validateFile(file)) {
+      handleFileUpload(file);
+    }
   }, [toast]);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      handleFileUpload(file);
+      if (validateFile(file)) {
+        handleFileUpload(file);
+      }
     }
+    // Reset the input value to allow selecting the same file again
+    e.target.value = '';
   };
 
   const handleFileUpload = (file: File) => {
     setUploadStatus('uploading');
     
-    // Simulate upload delay
+    // Simulate upload delay with error handling
     setTimeout(() => {
-      setUploadStatus('success');
-      onUploadComplete(file);
-      toast({
-        title: "Resume uploaded successfully!",
-        description: "Your resume is being analyzed...",
-      });
+      try {
+        setUploadStatus('success');
+        onUploadComplete(file);
+        toast({
+          title: "File uploaded successfully!",
+          description: `${file.name} is being analyzed...`,
+        });
+      } catch (error) {
+        setUploadStatus('error');
+        toast({
+          title: "Upload failed",
+          description: "Please try again or contact support",
+          variant: "destructive",
+        });
+      }
     }, 1500);
   };
 
@@ -71,13 +110,13 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
   const getStatusText = () => {
     switch (uploadStatus) {
       case 'uploading':
-        return 'Uploading your resume...';
+        return 'Uploading your file...';
       case 'success':
-        return 'Resume uploaded successfully!';
+        return 'File uploaded successfully!';
       case 'error':
         return 'Upload failed. Please try again.';
       default:
-        return 'Drag & drop your resume here';
+        return 'Drag & drop your file here';
     }
   };
 
@@ -110,13 +149,13 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
                 or click to browse files
               </p>
               <p className="text-xs text-muted-foreground">
-                Supports PDF, DOC, DOCX • Max size 10MB
+                Supports PDF, DOC, DOCX, JPG, PNG, TXT • Max size 10MB
               </p>
             </div>
 
             <input
               type="file"
-              accept=".pdf,.doc,.docx"
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt"
               onChange={handleFileSelect}
               className="hidden"
               id="resume-upload"
