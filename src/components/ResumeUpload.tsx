@@ -81,11 +81,13 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
             </div>
 
             {/* ✅ 2. Hidden input with ref */}
+          <label htmlFor="resume-upload">
             <input
               type="file"
+              id="resume-upload"
               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt"
               onChange={handleFileSelect}
-              ref={fileInputRef}
+              //ref={fileInputRef}
               className="hidden"
               disabled={uploadStatus === 'uploading'}
             />
@@ -94,14 +96,15 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
             <Button
               type="button"
               variant="outline"
-              onClick={handleBrowseClick}
+              //onClick={handleBrowseClick}
               disabled={uploadStatus === 'uploading'}
             >
               <FileText className="w-4 h-4 mr-2" />
               Choose File
             </Button>
-          </div>
+          </label>
         </div>
+      </div>
         {uploadStatus === 'success' && (
           <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded-lg animate-fade-in">
             <div className="flex items-center gap-2 text-accent">
