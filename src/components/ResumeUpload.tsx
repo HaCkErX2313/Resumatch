@@ -159,7 +159,7 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
               onChange={handleFileSelect}
               className="hidden"
               id="resume-upload"
-              disabled={uploadStatus === 'uploading'}
+              //disabled={uploadStatus === 'uploading'}//
             />
             <label htmlFor="resume-upload">
               <Button 
