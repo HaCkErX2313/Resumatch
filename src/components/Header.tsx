@@ -1,6 +1,10 @@
 import { FileText, Target, TrendingUp } from 'lucide-react';
 
-const Header = () => {
+interface HeaderProps {
+  onHelpClick?: () => void;
+}
+
+const Header = ({ onHelpClick }: HeaderProps) => {
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-background/95">
       <div className="container mx-auto px-4 py-4">
@@ -22,6 +26,12 @@ const Header = () => {
             <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </a>
+            <button 
+              onClick={onHelpClick}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Help & Support
+            </button>
           </nav>
         </div>
       </div>

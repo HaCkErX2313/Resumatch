@@ -6,8 +6,9 @@ import Header from '@/components/Header';
 import ResumeUpload from '@/components/ResumeUpload';
 import ResumeAnalysis from '@/components/ResumeAnalysis';
 import JobMatching from '@/components/JobMatching';
+import HelpSupport from '@/components/HelpSupport';
 
-type Step = 'landing' | 'upload' | 'analysis' | 'jobs';
+type Step = 'landing' | 'upload' | 'analysis' | 'jobs' | 'help';
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<Step>('landing');
@@ -26,9 +27,17 @@ const Index = () => {
     setCurrentStep('analysis');
   };
 
+  const handleShowHelp = () => {
+    setCurrentStep('help');
+  };
+
+  const handleBackToLanding = () => {
+    setCurrentStep('landing');
+  };
+
   const renderLandingPage = () => (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header onHelpClick={handleShowHelp} />
       
       {/* Hero Section */}
       <section className="py-20 px-4 bg-gradient-hero">
@@ -186,7 +195,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header onHelpClick={handleShowHelp} />
       <div className="container mx-auto px-4 py-8">
         {currentStep === 'upload' && (
           <div className="space-y-8">
@@ -209,6 +218,10 @@ const Index = () => {
 
         {currentStep === 'jobs' && (
           <JobMatching onBack={handleBackToAnalysis} />
+        )}
+
+        {currentStep === 'help' && (
+          <HelpSupport onBack={handleBackToLanding} />
         )}
       </div>
     </div>
