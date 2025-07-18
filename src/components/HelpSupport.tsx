@@ -13,21 +13,21 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
       icon: Mail,
       title: "Email Support",
       description: "Get help via email within 24 hours",
-      contact: "support@resumatch.com",
+      contact: "vinay22patel22@gmail.com",
       availability: "24/7"
     },
     {
       icon: MessageCircle,
       title: "Live Chat",
       description: "Chat with our support team in real-time",
-      contact: "Available in app",
+      contact: "Currently Not Available",
       availability: "Mon-Fri 9AM-6PM EST"
     },
     {
       icon: Phone,
       title: "Phone Support",
       description: "Speak directly with our experts",
-      contact: "+1 (555) 123-4567",
+      contact: "+91 8303163671",
       availability: "Mon-Fri 9AM-5PM EST"
     }
   ];
