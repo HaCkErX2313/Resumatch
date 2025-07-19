@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -12,6 +12,12 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+const handleBrowseClick = () => {
+  fileInputRef.current?.click();
+};
+
 
   const validateFile = (file: File): boolean => {
     // Check file size (10MB limit)
@@ -157,14 +163,16 @@ const ResumeUpload = ({ onUploadComplete }: ResumeUploadProps) => {
               type="file"
               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt"
               onChange={handleFileSelect}
+              ref={fileInputRef}
               className="hidden"
-              id="resume-upload"
+              //id="resume-upload"
               disabled={uploadStatus === 'uploading'}
             />
-            <label htmlFor="resume-upload">
-              <Button 
-                variant="outline" 
-                className="cursor-pointer"
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleBrowseClick}
+                //className="cursor-pointer"
                 disabled={uploadStatus === 'uploading'}
               >
                 <FileText className="w-4 h-4 mr-2" />
