@@ -158,7 +158,7 @@ const handleBrowseClick = () => {
                 Supports PDF, DOC, DOCX, JPG, PNG, TXT • Max size 10MB
               </p>
             </div>
-
+           <label className="cursor-pointer">
             <input
               type="file"
               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt"
@@ -171,9 +171,11 @@ const handleBrowseClick = () => {
               <Button
                 type="button"
                 variant="outline"
-                onClick={handleBrowseClick}
+                className="cursor-pointer"
+                //onClick={handleBrowseClick}
                 //className="cursor-pointer"
                 disabled={uploadStatus === 'uploading'}
+                onClick={handleBrowseClick}
               >
                 <FileText className="w-4 h-4 mr-2" />
                 Choose File
